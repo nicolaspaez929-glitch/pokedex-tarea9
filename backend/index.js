@@ -15,13 +15,16 @@ mongoose.connect(config.mongoUri)
     .then(() => console.log('✅ MongoDB Conectado'))
     .catch(err => console.error('❌ Error Mongo:', err));
 
-// Esquema de Mongo (Asegúrate que coincida con tus 10 pokémons)
+// Esquema de Mongo
+
 const pokemonSchema = new mongoose.Schema({
     nombre: String,
     altura: String,
     peso: String,
-    imagenFrontal: String,
-    imagenPosterior: String
+    imagen_frontal: String,      
+    imagen_posterior: String,  
+    habilidad: String,     
+    ataque_principal: String     
 }, { collection: 'pokedex' });
 
 const PokemonMongo = mongoose.model('Pokemon', pokemonSchema);
@@ -33,10 +36,20 @@ app.get('/pokemon/:nombre', async (req, res) => {
 
     try {
         if (fuente === 'mongo') {
-            const poke = await PokemonMongo.findOne({ nombre: new RegExp(`^${nombre}$`, 'i') });
-            if (!poke) return res.status(404).json({ error: "No encontrado en MongoDB" });
-            return res.json({ ...poke._doc, fuente: "MongoDB Atlas" });
-        } 
+    const poke = await PokemonMongo.findOne({ nombre: new RegExp(`^${nombre}$`, 'i') });
+    if (!poke) return res.status(404).json({ error: "No encontrado en MongoDB" });
+    
+    return res.json({
+        nombre: poke.nombre,
+        altura: poke.altura,
+        peso: poke.peso,
+        imagen_frontal: poke.imagen_frontal,       // ← normalizado
+        imagen_posterior: poke.imagen_posterior,   // ← normalizado
+        habilidad: poke.habilidad,
+        ataque_principal: poke.ataque_principal,
+        fuente: "MongoDB Atlas"
+    });
+}
         
         // Por defecto o si es supabase
         const { data, error } = await supabase
