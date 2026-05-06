@@ -10,7 +10,7 @@ async function buscar(fuente) {
 
     try {
         // Hacemos la petición al backend enviando la fuente como query
-        const resp = await fetch(`https://pokedex-tarea9.onrender.com/${nombre}?fuente=${fuente}`);
+        const resp = await fetch(`https://pokedex-tarea9.onrender.com/pokemon/${nombre}?fuente=${fuente}`);
         const data = await resp.json();
 
         if (data.error) {
