@@ -37,7 +37,7 @@ const config = {
     supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jeXNpZmh3cGNxZGJuaHh2bGpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MjgyMDcsImV4cCI6MjA5MzQwNDIwN30.U3Hpfstr3uNRCioQPEjDry74fgPQXlSRApBA991ZuwU", 
     
     // Tu URI de MongoDB Atlas
-    mongoUri: "mongodb+srv://nicolaspaez929_db_user:BVUrh0WRAj762hnL@pokemongo.f65pksm.mongodb.net/?appName=PokeMongo"
+    mongoUri: "mongodb+srv://nicolaspaez929_db_user:BVUrh0WRAj762hnL@pokemongo.f65pksm.mongodb.net/pokedex?retryWrites=true&w=majority&appName=PokeMongo"
 };
 
 module.exports = config;
