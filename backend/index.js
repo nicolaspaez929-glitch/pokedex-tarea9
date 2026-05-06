@@ -22,7 +22,7 @@ const pokemonSchema = new mongoose.Schema({
     peso: String,
     imagenFrontal: String,
     imagenPosterior: String
-}, { collection: 'pokemones' });
+}, { collection: 'pokedex' });
 
 const PokemonMongo = mongoose.model('Pokemon', pokemonSchema);
 
@@ -42,7 +42,7 @@ app.get('/pokemon/:nombre', async (req, res) => {
         const { data, error } = await supabase
             .from('pokemones')
             .select('*')
-            .eq('nombre', nombre)
+            .ilike('nombre', nombre)
             .single();
 
         if (error || !data) return res.status(404).json({ error: "No encontrado en Supabase" });
