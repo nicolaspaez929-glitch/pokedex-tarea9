@@ -21,8 +21,8 @@ async function buscar(fuente) {
             document.getElementById('displayHeight').innerText = data.altura;
             document.getElementById('displaySource').innerText = data.fuente;
             
-            document.getElementById('imgFront').src = data.imagenFrontal;
-            document.getElementById('imgBack').src = data.imagenPosterior;
+            document.getElementById('imgFront').src = data.imagen_frontal;
+document.getElementById('imgBack').src = data.imagen_posterior;
 
             resultDiv.style.display = 'block';
         }
