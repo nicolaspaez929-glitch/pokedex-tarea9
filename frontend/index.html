@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex GO Style - Tarea 9</title>
+    <!-- Asegúrate de que el archivo se llame style.css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h3 class="title">BUSCAR POKÉMON</h3>
+            
+            <div class="search-box">
+                <input type="text" id="pokemonName" placeholder="Nombre (ej: mew)">
+                
+                <div class="button-group">
+                    <button id="btnSupabase" class="btn btn-supabase">Consultar Supabase</button>
+                    <button id="btnMongo" class="btn btn-mongo">Consultar MongoDB</button>
+                </div>
+            </div>
+
+            <div id="result" class="result-container" style="display: none;">
+                <div class="stats-arc">
+                    <h2 id="displayName">---</h2>
+                </div>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span id="displayWeight">0.0 kg</span>
+                        <p>PESO</p>
+                    </div>
+                    <div class="info-item">
+                        <span id="displayHeight">0.0 m</span>
+                        <p>ALTURA</p>
+                    </div>
+                </div>
+
+                <button id="btnImagen" class="btn btn-main">VER IMAGEN</button>
+                <p class="source-tag">Base de datos: <span id="displaySource">---</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para imágenes -->
+    <div id="modalImagen" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="pokemon-images">
+                <img id="imgFront" src="" alt="Frontal">
+                <img id="imgBack" src="" alt="Posterior">
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

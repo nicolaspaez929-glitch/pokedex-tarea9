@@ -1,0 +1,27 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Pokémon Microservicio API",
+    "version": "1.0.0",
+    "description": "API para consultar datos de Pokémon desde una base de datos local"
+  },
+  "paths": {
+    "/pokemon/{nombre}": {
+      "get": {
+        "summary": "Obtiene datos de un Pokémon",
+        "parameters": [
+          {
+            "name": "nombre",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Éxito" },
+          "404": { "description": "No encontrado" }
+        }
+      }
+    }
+  }
+}
