@@ -3,7 +3,7 @@
   "info": {
     "title": "Pokémon Microservicio API",
     "version": "1.0.0",
-    "description": "API para consultar datos de Pokémon desde una base de datos local"
+    "description": "API para consultar datos de Pokémon desde Supabase o MongoDB"
   },
   "paths": {
     "/pokemon/{nombre}": {
@@ -14,7 +14,18 @@
             "name": "nombre",
             "in": "path",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": { "type": "string" },
+            "example": "mew"
+          },
+          {
+            "name": "fuente",
+            "in": "query",
+            "required": false,
+            "schema": { 
+              "type": "string",
+              "enum": ["supabase", "mongo"]
+            },
+            "example": "supabase"
           }
         ],
         "responses": {
