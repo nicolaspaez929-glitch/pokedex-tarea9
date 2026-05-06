@@ -20,6 +20,8 @@ async function buscar(fuente) {
             document.getElementById('displayWeight').innerText = data.peso;
             document.getElementById('displayHeight').innerText = data.altura;
             document.getElementById('displaySource').innerText = data.fuente;
+            document.getElementById('displayHabilidad').innerText = data.habilidad || "---";
+            document.getElementById('displayAtaque').innerText = data.ataque_principal || "---";
             
             document.getElementById('imgFront').src = data.imagen_frontal;
 document.getElementById('imgBack').src = data.imagen_posterior;
