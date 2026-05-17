@@ -23,7 +23,8 @@ const personajes = {
 // URLs de los backends por anime
 const backends = {
     pokemon: "https://pokedex-tarea9.onrender.com/pokemon",
-    blackclover: "https://blackclover-backend.onrender.com/personaje",
+    // Recuerda cambiar esta URL si vas a probar de forma local (ej: http://127.0.0.1:5001/personaje)
+    blackclover: "https://blackclover-backend.onrender.com/personaje", 
     mashle: "https://mashle-backend.onrender.com/personaje"
 };
 
@@ -118,9 +119,24 @@ async function buscar() {
         document.getElementById('displayWeight').innerText = data.peso || '---';
         document.getElementById('displayHeight').innerText = data.altura || '---';
 
-        // Mostramos habilidad y ataque
+        // Mostramos la habilidad
         document.getElementById('displayHabilidad').innerText = data.habilidad || '---';
-        document.getElementById('displayAtaque').innerText = data.ataque_principal || '---';
+
+        // ===== CONTROL DE DISEÑO INTELIGENTE PARA BLACK CLOVER =====
+        // Buscamos la etiqueta que contiene el título en tu HTML para poder cambiarla
+        const etiquetaAtaque = document.getElementById('displayAtaque').parentElement;
+        
+        if (animeActual === 'blackclover') {
+            // Unificamos Ataque y Escuadrón estéticamente para Yuno y compañía
+            etiquetaAtaque.innerHTML = `<strong>Ataque / Escuadrón:</strong> <span id="displayAtaque"></span>`;
+            const ataqueReal = data.ataque_principal || '---';
+            const escuadronReal = data.escuadron || '---';
+            document.getElementById('displayAtaque').innerText = `${ataqueReal} (${escuadronReal})`;
+        } else {
+            // Mantiene el diseño base para Pokémon y Mashle
+            etiquetaAtaque.innerHTML = `<strong>Ataque Principal:</strong> <span id="displayAtaque"></span>`;
+            document.getElementById('displayAtaque').innerText = data.ataque_principal || '---';
+        }
 
         // Mostramos la fuente de la base de datos
         document.getElementById('displaySource').innerText = data.fuente || '---';
