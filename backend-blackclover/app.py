@@ -47,7 +47,7 @@ def obtener_mago(nombre):
             "altura": mago.get("altura"),
             "peso": mago.get("peso"),
             "habilidad": mago.get("habilidad"),
-            "ataque_principal": mago.get("attack_principal"), # Muestra: "Tormenta de Espíritu"
+            "ataque_principal": mago.get("ataque_principal"), # Muestra: "Tormenta de Espíritu"
             "escuadron": mago.get("escuadron"),               # Muestra: "Amanecer Dorado"
             "imagen": mago.get("imagen"),
             "fuente": "PostgreSQL (Supabase Cloud via REST API)"
