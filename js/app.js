@@ -32,8 +32,7 @@ document.getElementById('imgBack').src = data.imagen_posterior;
         alert("Error: ¿Está encendido el servidor node?");
     }
 }
-
-btnSupabase.onclick = () => buscar('supabase');
+btnSupabase.onclick = () => buscar('mysql');
 btnMongo.onclick = () => buscar('mongo');
 
 // Modal
