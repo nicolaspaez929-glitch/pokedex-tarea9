@@ -3,61 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokédex GO Style - Tarea 9</title>
-    <!-- Llamado a CSS -->
+    <!-- Título dinámico según el anime seleccionado -->
+    <title>Anime Search App</title>
+    <!-- Llamado al CSS principal -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
-        <div class="card">
-            <h3 class="title">BUSCAR POKÉMON</h3>
-            
-            <div class="search-box">
-                <input type="text" id="pokemonName" placeholder="Nombre (ej: mew)">
-                
-                <div class="button-group">
-                    <button id="btnSupabase" class="btn btn-supabase">Consultar MySQL</button>
-                    <button id="btnMongo" class="btn btn-mongo">Consultar MongoDB</button>
-                </div>
+        <div class="card" id="mainCard">
+
+            <!-- Título dinámico -->
+            <h3 class="title" id="mainTitle">SELECCIONA UN ANIME</h3>
+
+            <!-- Selector de anime -->
+            <div class="anime-selector">
+                <!-- Botón Pokémon -->
+                <button class="btn-anime" id="btnPokemon" onclick="seleccionarAnime('pokemon')">
+                    ⚡ Pokémon
+                </button>
+                <!-- Botón Black Clover -->
+                <button class="btn-anime" id="btnBlackClover" onclick="seleccionarAnime('blackclover')">
+                    ⚔️ Black Clover
+                </button>
+                <!-- Botón Mashle -->
+                <button class="btn-anime" id="btnMashle" onclick="seleccionarAnime('mashle')">
+                    👊 Mashle
+                </button>
             </div>
 
+            <!-- Selector de personaje (aparece al elegir anime) -->
+            <div class="search-box" id="searchBox" style="display: none;">
+                <!-- Dropdown con personajes del anime seleccionado -->
+                <select id="personajeSelect" class="select-personaje">
+                    <option value="">-- Selecciona un personaje --</option>
+                </select>
+
+                <!-- Botón de búsqueda -->
+                <button class="btn btn-buscar" id="btnBuscar" onclick="buscar()">
+                    BUSCAR
+                </button>
+            </div>
+
+            <!-- Resultado de la búsqueda -->
             <div id="result" class="result-container" style="display: none;">
+                <!-- Nombre del personaje -->
                 <div class="stats-arc">
                     <h2 id="displayName">---</h2>
                 </div>
-                
+
+                <!-- Imagen del personaje -->
+                <div class="imagen-container">
+                    <img id="imgPersonaje" src="" alt="Personaje">
+                </div>
+
+                <!-- Grid de información -->
                 <div class="info-grid">
                     <div class="info-item">
-                        <span id="displayWeight">0.0 kg</span>
+                        <span id="displayWeight">---</span>
                         <p>PESO</p>
                     </div>
                     <div class="info-item">
-                        <span id="displayHeight">0.0 m</span>
+                        <span id="displayHeight">---</span>
                         <p>ALTURA</p>
                     </div>
                 </div>
 
+                <!-- Grid de habilidad y ataque -->
                 <div class="info-grid">
-                <div class="info-item">
-                    <span id="displayHabilidad">---</span>
-                     <p>HABILIDAD</p>
-             </div>
-                <div class="info-item">
-                    <span id="displayAtaque">---</span>
-                    <p>ATAQUE PRINCIPAL</p>
-                     </div>
+                    <div class="info-item">
+                        <span id="displayHabilidad">---</span>
+                        <p>HABILIDAD</p>
+                    </div>
+                    <div class="info-item">
+                        <span id="displayAtaque">---</span>
+                        <p>ATAQUE PRINCIPAL</p>
+                    </div>
+                </div>
+
+                <!-- Para Pokémon: botón ver imagen posterior -->
+                <button id="btnImagen" class="btn btn-main" style="display:none;" onclick="abrirModal()">
+                    VER IMAGEN POSTERIOR
+                </button>
+
+                <!-- Fuente de la base de datos -->
+                <p class="source-tag">
+                    Base de datos: <span id="displaySource">---</span>
+                </p>
             </div>
 
-                <button id="btnImagen" class="btn btn-main">VER IMAGEN</button>
-                <p class="source-tag">Base de datos: <span id="displaySource">---</span></p>
-            </div>
         </div>
     </div>
 
-    <!-- Modal para imágenes -->
+    <!-- Modal para imagen posterior (solo Pokémon) -->
     <div id="modalImagen" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close" onclick="cerrarModal()">&times;</span>
             <div class="pokemon-images">
                 <img id="imgFront" src="" alt="Frontal">
                 <img id="imgBack" src="" alt="Posterior">
@@ -65,6 +105,7 @@
         </div>
     </div>
 
+    <!-- Llamado al JS principal -->
     <script src="js/app.js"></script>
 </body>
 </html>
