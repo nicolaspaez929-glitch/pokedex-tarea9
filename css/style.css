@@ -1,60 +1,296 @@
+/* ===== VARIABLES DE TEMA POR ANIME ===== */
+/* Tema por defecto */
+:root {
+    --bg-color: #88d3b4;
+    --card-color: #ffffff;
+    --title-color: #2d2d2d;
+    --btn-primary: #3ecf8e;
+    --btn-secondary: #47a248;
+    --btn-buscar: #58d2b7;
+    --text-color: #2d2d2d;
+    --border-color: #ddd;
+}
+
+/* Tema Pokémon - verde */
+body.tema-pokemon {
+    --bg-color: #88d3b4;
+    --btn-primary: #3ecf8e;
+    --btn-buscar: #58d2b7;
+}
+
+/* Tema Black Clover - dorado oscuro */
+body.tema-blackclover {
+    --bg-color: #1a1a2e;
+    --card-color: #16213e;
+    --title-color: #ffd700;
+    --btn-primary: #ffd700;
+    --btn-secondary: #b8860b;
+    --btn-buscar: #ffd700;
+    --text-color: #ffffff;
+    --border-color: #ffd700;
+}
+
+/* Tema Mashle - azul elegante */
+body.tema-mashle {
+    --bg-color: #0f3460;
+    --card-color: #16213e;
+    --title-color: #e94560;
+    --btn-primary: #e94560;
+    --btn-secondary: #0f3460;
+    --btn-buscar: #e94560;
+    --text-color: #ffffff;
+    --border-color: #e94560;
+}
+
+/* ===== ESTILOS GENERALES ===== */
 body {
-    background-color: #88d3b4; /* Verde suave de fondo */
+    background-color: var(--bg-color);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    transition: background-color 0.5s ease;
 }
 
-.container { width: 100%; max-width: 400px; }
+/* Contenedor principal */
+.container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
 
+/* Tarjeta principal */
 .card {
-    background: white;
+    background: var(--card-color);
     padding: 30px;
     border-radius: 30px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     text-align: center;
+    transition: all 0.5s ease;
+    border: 2px solid transparent;
 }
 
-.search-box input {
-    width: 90%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    font-size: 16px;
+/* Tema Black Clover - borde dorado */
+body.tema-blackclover .card {
+    border-color: #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
-.button-group {
+/* Tema Mashle - borde rojo */
+body.tema-mashle .card {
+    border-color: #e94560;
+    box-shadow: 0 0 20px rgba(233, 69, 96, 0.3);
+}
+
+/* Título principal */
+.title {
+    color: var(--title-color);
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    transition: color 0.5s ease;
+}
+
+/* ===== SELECTOR DE ANIME ===== */
+.anime-selector {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     justify-content: center;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
+/* Botones de selección de anime */
+.btn-anime {
+    padding: 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.85rem;
+    background: transparent;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+/* Botón Pokémon activo */
+.btn-anime.active-pokemon {
+    background: #3ecf8e;
+    border-color: #3ecf8e;
+    color: white;
+}
+
+/* Botón Black Clover activo */
+.btn-anime.active-blackclover {
+    background: #ffd700;
+    border-color: #ffd700;
+    color: #1a1a2e;
+}
+
+/* Botón Mashle activo */
+.btn-anime.active-mashle {
+    background: #e94560;
+    border-color: #e94560;
+    color: white;
+}
+
+/* ===== CAJA DE BÚSQUEDA ===== */
+.search-box {
+    margin-bottom: 15px;
+}
+
+/* Dropdown de personajes */
+.select-personaje {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    background: var(--card-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* ===== BOTONES ===== */
 .btn {
     padding: 10px 15px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
-.btn-supabase { background-color: #3ecf8e; color: white; }
-.btn-mongo { background-color: #47a248; color: white; }
-.btn-main { background-color: #58d2b7; color: white; width: 100%; margin-top: 15px; }
+/* Botón buscar */
+.btn-buscar {
+    background-color: var(--btn-buscar);
+    color: white;
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
 
-.btn:hover { opacity: 0.8; transform: scale(1.05); }
+/* Botón principal resultado */
+.btn-main {
+    background-color: var(--btn-buscar);
+    color: white;
+    width: 100%;
+    margin-top: 15px;
+}
 
-.result-container { margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px; }
+/* Hover en botones */
+.btn:hover,
+.btn-buscar:hover,
+.btn-anime:hover {
+    opacity: 0.85;
+    transform: scale(1.03);
+}
 
-.info-grid { display: flex; justify-content: space-around; margin-top: 15px; }
+/* ===== RESULTADO ===== */
+.result-container {
+    margin-top: 20px;
+    border-top: 2px solid var(--border-color);
+    padding-top: 20px;
+    transition: border-color 0.5s ease;
+}
 
-/* Estilos del Modal */
-.modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); }
-.modal-content { background-color: white; margin: 15% auto; padding: 20px; border-radius: 20px; width: 80%; max-width: 300px; position: relative; }
-.close { position: absolute; right: 15px; top: 10px; font-size: 24px; cursor: pointer; }
-.pokemon-images img { width: 120px; }
+/* Nombre del personaje */
+.stats-arc h2 {
+    color: var(--title-color);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    transition: color 0.5s ease;
+}
+
+/* Imagen del personaje */
+.imagen-container {
+    margin: 15px 0;
+}
+
+.imagen-container img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+/* Grid de información */
+.info-grid {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+/* Item de información */
+.info-item span {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--title-color);
+    transition: color 0.5s ease;
+}
+
+.info-item p {
+    font-size: 0.75rem;
+    color: #888;
+    margin: 3px 0 0 0;
+}
+
+/* Etiqueta de fuente */
+.source-tag {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.source-tag span {
+    font-weight: bold;
+    color: var(--btn-primary);
+}
+
+/* ===== MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 300px;
+    position: relative;
+    text-align: center;
+}
+
+/* Botón cerrar modal */
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Imágenes en modal */
+.pokemon-images img {
+    width: 120px;
+}
